@@ -24,7 +24,7 @@ void Cromossomo::adicionaNovaAresta(int verticeA, int verticeB) {
 	aresta.setVertice1(vertice1);
 	aresta.setVertice2(vertice2);
 
-	grafoMatriz[vertice1.getValor()][vertice2.getValor()] = aresta;
+	// TODO adicionar aresta na matriz
 }
 
 Aresta Cromossomo::getAresta(int vertice1, int vertice2) {
