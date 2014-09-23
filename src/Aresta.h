@@ -9,6 +9,7 @@ class Aresta {
 	Vertice v2;
 
 public:
+	Aresta();
 	void setVertice1(Vertice);
 	void setVertice2(Vertice);
 	bool validaCorDiferenteVertices(void);

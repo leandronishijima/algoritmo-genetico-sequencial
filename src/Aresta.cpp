@@ -1,11 +1,7 @@
-/*
- * Aresta.cpp
- *
- *  Created on: 22/09/2014
- *      Author: Leandro
- */
-
 #include "Aresta.h"
+
+Aresta::Aresta() {
+}
 
 void Aresta::setVertice1(Vertice v1) {
 	this->v1 = v1;

@@ -7,8 +7,11 @@ class Vertice {
 	int cor;
 
 public:
-	Vertice(int valor, int cor);
+	Vertice();
+	void setValor(int);
+	void setCor(int);
 	int getCor(void);
+	int getValor(void);
 };
 
 #endif
