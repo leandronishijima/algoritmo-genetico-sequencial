@@ -3,22 +3,16 @@
 
 #include "Vertice.h"
 #include "Aresta.h"
-#include <map>
-#include <vector>
-
-using namespace std;
+#include "Grafo.h"
 
 class Cromossomo {
 
-	std::vector<std::vector<Aresta> > grafoMatriz;
-	std::map<int, Vertice> vertices;
+	Grafo grafo;
 	long avaliacao;
 
 public:
 	Cromossomo();
-	void adicionaNovoVertice(int vertice, int corDoVertice);
-	void adicionaNovaAresta(int verticeA, int verticeB);
-	Aresta getAresta(int verticeA, int verticeB);
+	Cromossomo(Grafo);
 };
 
 #endif

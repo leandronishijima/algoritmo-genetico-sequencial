@@ -10,9 +10,13 @@ class Aresta {
 
 public:
 	Aresta();
+	Aresta(Vertice, Vertice);
+	bool validaCorDiferenteVertices(void);
+
+private:
 	void setVertice1(Vertice);
 	void setVertice2(Vertice);
-	bool validaCorDiferenteVertices(void);
+
 };
 
 #endif
