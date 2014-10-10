@@ -3,6 +3,7 @@
 #include "Aresta.h"
 
 Grafo::Grafo() {
+	avaliacao = 0;
 }
 
 void Grafo::adicionaVertice(int numeroVertice, int corVertice) {
@@ -18,4 +19,8 @@ void Grafo::adicionaAresta(int verticeValor1, int verticeValor2) {
 	Vertice vertice2 = vertices[verticeValor2];
 
 	arestas[verticeValor1][verticeValor2] = Aresta(vertice1, vertice2);
+}
+
+int Grafo::calculaAvaliacao() {
+	return avaliacao;
 }

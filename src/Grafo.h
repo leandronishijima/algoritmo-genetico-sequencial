@@ -11,12 +11,14 @@ class Grafo {
 
 	Aresta arestas[100][100];
 	std::map<int, Vertice> vertices;
+	int avaliacao;
 
 public:
 	Grafo();
 	void adicionaVertice(int, int);
 	void adicionaAresta(int, int);
 	Aresta getAresta(int, int);
+	int calculaAvaliacao();
 };
 
 #endif

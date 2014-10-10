@@ -1,13 +1,23 @@
-/*
- * AlgoritmoGenetico.cpp
- *
- *  Created on: 23/09/2014
- *      Author: leandro
- */
-
 #include "AlgoritmoGenetico.h"
 
 AlgoritmoGenetico::AlgoritmoGenetico() {
-	// TODO Auto-generated constructor stub
 }
 
+void AlgoritmoGenetico::adicionaGrafoAPopulacao(int index, Grafo grafo) {
+	populacao[index] = Cromossomo(grafo);
+}
+
+AlgoritmoGenetico::AlgoritmoGenetico(Grafo populacaoInicial[]) {
+	for (int i = 0; i < sizeof(populacaoInicial); ++i)
+		adicionaGrafoAPopulacao(i, populacaoInicial[i]);
+}
+
+bool criterioDeParada() {
+	return true; // TODO criar outro criterio de parada!
+}
+
+void AlgoritmoGenetico::executaAlgoritmo() {
+	while(criterioDeParada()) {
+
+	}
+}

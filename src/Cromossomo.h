@@ -8,7 +8,6 @@
 class Cromossomo {
 
 	Grafo grafo;
-	long avaliacao;
 
 public:
 	Cromossomo();
