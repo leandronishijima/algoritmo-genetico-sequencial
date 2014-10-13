@@ -1,4 +1,6 @@
 #include "AlgoritmoGenetico.h"
+#include "Cromossomo.h"
+#include "Grafo.h"
 
 AlgoritmoGenetico::AlgoritmoGenetico() {
 }

@@ -12,6 +12,7 @@ public:
 	void setCor(int);
 	int getCor(void);
 	int getValor(void);
+	bool equals(Vertice other);
 };
 
 #endif

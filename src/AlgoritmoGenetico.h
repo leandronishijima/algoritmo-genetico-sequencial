@@ -1,6 +1,9 @@
 #ifndef ALGORITMOGENETICO_H_
 #define ALGORITMOGENETICO_H_
 
+#include "Grafo.h"
+#include "Cromossomo.h"
+
 class AlgoritmoGenetico {
 
 	Cromossomo populacao[2];

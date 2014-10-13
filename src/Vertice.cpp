@@ -20,3 +20,7 @@ int Vertice::getValor() {
 int Vertice::getCor() {
 	return cor;
 }
+
+bool Vertice::equals(Vertice other) {
+	return getValor() == other.getValor() && getCor() == other.getCor();
+}

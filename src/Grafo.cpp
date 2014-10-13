@@ -30,7 +30,7 @@ bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
 	for (int i = 0; i < sizeof(vertices) - 1; ++i) {
 		Aresta aresta = arestas[vertice.getValor()][i];
 
-		if(aresta == NULL)
+		if(aresta == 0)
 			continue;
 
 		int corAdjacente = aresta.getCorOutroVertice(vertice);

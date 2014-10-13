@@ -1,4 +1,5 @@
 #include "Aresta.h"
+#include "Vertice.h"
 
 Aresta::Aresta() {
 }
@@ -21,5 +22,5 @@ bool Aresta::validaCorDiferenteVertices() {
 }
 
 int Aresta::getCorOutroVertice(Vertice vertice) {
-	return vertice == v1 ? v2.getCor() : v1.getCor();
+	return vertice.equals(v1) ? v2.getCor() : v1.getCor();
 }
