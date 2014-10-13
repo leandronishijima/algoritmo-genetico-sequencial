@@ -11,7 +11,8 @@ class Aresta {
 public:
 	Aresta();
 	Aresta(Vertice, Vertice);
-	bool validaCorDiferenteVertices(void);
+	bool validaCorDiferenteVertices();
+	int getCorOutroVertice(Vertice vertice);
 
 private:
 	void setVertice1(Vertice);

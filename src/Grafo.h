@@ -19,6 +19,10 @@ public:
 	void adicionaAresta(int, int);
 	Aresta getAresta(int, int);
 	int calculaAvaliacao();
+	void randomizaCorVerticeSeguindoHeuristica(int verticeNumero);
+
+private:
+	bool existeAdjacenteComCor(Vertice vertice, int cor);
 };
 
 #endif

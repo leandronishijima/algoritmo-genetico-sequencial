@@ -20,3 +20,6 @@ bool Aresta::validaCorDiferenteVertices() {
 	return v1.getCor() != v2.getCor();
 }
 
+int Aresta::getCorOutroVertice(Vertice vertice) {
+	return vertice == v1 ? v2.getCor() : v1.getCor();
+}

@@ -18,7 +18,7 @@ void adicionaVerticesComMesmaCor(Grafo grafo, int corDosVertices, int valores[])
 
 void adicionaVerticesComCoresRandomicas(Grafo grafo, int valores[]) {
 	for (int i=0; i < arraySize(valores); ++i)
-		grafo.adicionaVertice(valores[i], rand() % 3);
+		grafo.adicionaVertice(valores[i], rand() % 4);
 }
 
 void adicionaArestasTeste(Grafo& grafo) {
