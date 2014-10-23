@@ -2,11 +2,13 @@
 #include "Vertice.h"
 
 Aresta::Aresta() {
+	arestaReal = false;
 }
 
 Aresta::Aresta(Vertice v1, Vertice v2) {
 	setVertice1(v1);
 	setVertice2(v2);
+	marcaArestaReal();
 }
 
 void Aresta::setVertice1(Vertice v1) {
@@ -23,4 +25,12 @@ bool Aresta::validaCorDiferenteVertices() {
 
 int Aresta::getCorOutroVertice(Vertice vertice) {
 	return vertice.equals(v1) ? v2.getCor() : v1.getCor();
+}
+
+void Aresta::marcaArestaReal() {
+	arestaReal = true;
+}
+
+bool Aresta::isArestaReal() {
+	return arestaReal;
 }

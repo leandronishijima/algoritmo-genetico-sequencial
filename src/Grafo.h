@@ -9,7 +9,8 @@ using namespace std;
 
 class Grafo {
 
-	Aresta arestas[100][100];
+//	Aresta arestas[5566][5566]; // grafo real
+	Aresta arestas[5][5]; // grafo testes
 	std::map<int, Vertice> vertices;
 	int avaliacao;
 

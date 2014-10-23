@@ -7,12 +7,15 @@ class Aresta {
 
 	Vertice v1;
 	Vertice v2;
+	bool arestaReal;
 
 public:
 	Aresta();
 	Aresta(Vertice, Vertice);
 	bool validaCorDiferenteVertices();
 	int getCorOutroVertice(Vertice vertice);
+	void marcaArestaReal();
+	bool isArestaReal();
 
 private:
 	void setVertice1(Vertice);

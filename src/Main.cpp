@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include "Grafo.h"
 #include "Cromossomo.h"
+#include "AlgoritmoGenetico.h"
 
 using namespace std;
 
@@ -63,5 +64,6 @@ void criaPopulacaoInicial() {
 
 int main() {
 	criaPopulacaoInicial();
+
 	return 0;
 }
