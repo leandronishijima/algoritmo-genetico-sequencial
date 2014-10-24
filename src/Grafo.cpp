@@ -8,7 +8,6 @@
 
 Grafo::Grafo() {
 	avaliacao = 0;
-	srand(time(NULL));
 }
 
 void Grafo::adicionaVertice(int numeroVertice, int corVertice) {
@@ -27,10 +26,10 @@ void Grafo::adicionaAresta(int verticeValor1, int verticeValor2) {
 }
 
 bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
-	for (int i = 0; i < vertices.size(); ++i) {
+	for (unsigned int i = 0; i < vertices.size(); ++i) {
 		Aresta aresta = arestas[vertice.getValor()][i];
 
-		if(aresta.isArestaReal())
+		if(!aresta.isArestaReal())
 			continue;
 
 		int corAdjacente = aresta.getCorOutroVertice(vertice);
@@ -42,16 +41,18 @@ bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
 	return true;
 }
 
-void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero) {
+void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor) {
 	Vertice vertice = vertices[verticeNumero];
 
-	int corRandom = rand() % 4;
-
-	if(!existeAdjacenteComCor(vertice, corRandom))
-		vertice.setCor(corRandom);
+	if(!existeAdjacenteComCor(vertice, cor))
+		vertice.setCor(cor);
 }
 
 
 int Grafo::calculaAvaliacao() {
 	return avaliacao;
+}
+
+int Grafo::getQuantidadeVertices() {
+	return vertices.size();
 }

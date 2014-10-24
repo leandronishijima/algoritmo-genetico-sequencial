@@ -15,6 +15,9 @@ public:
 
 private:
 	void adicionaGrafoAPopulacao(int index, Grafo grafo);
+	Cromossomo cruzaIndividuos();
+	Cromossomo cruza(int indexReferencia);
+
 };
 
 #endif
