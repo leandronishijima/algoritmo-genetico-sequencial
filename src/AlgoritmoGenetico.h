@@ -7,6 +7,7 @@
 class AlgoritmoGenetico {
 
 	Cromossomo populacao[2];
+	Cromossomo cromossomoMaisAdaptado;
 
 public:
 	AlgoritmoGenetico();
@@ -15,8 +16,7 @@ public:
 
 private:
 	void adicionaGrafoAPopulacao(int index, Grafo grafo);
-	Cromossomo cruzaIndividuos();
-	Cromossomo cruza(int indexReferencia);
+	bool criterioDeParada();
 
 };
 

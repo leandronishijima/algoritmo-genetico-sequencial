@@ -7,7 +7,7 @@
 #include "Aresta.h"
 
 Grafo::Grafo() {
-	avaliacao = 0;
+	avaliacao = -1;
 }
 
 void Grafo::adicionaVertice(int numeroVertice, int corVertice) {

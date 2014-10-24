@@ -12,7 +12,6 @@ class Cromossomo {
 public:
 	Cromossomo();
 	Cromossomo(Grafo);
-	Cromossomo(Grafo, int index);
 	int getQuantidadeDeVertices();
 	Grafo getGrafo();
 };
