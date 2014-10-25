@@ -13,7 +13,8 @@ public:
 	Cromossomo();
 	Cromossomo(Grafo);
 	int getQuantidadeDeVertices();
-	Grafo getGrafo();
+	void randomizaCorVertice();
+	int getAvaliacao();
 };
 
 #endif

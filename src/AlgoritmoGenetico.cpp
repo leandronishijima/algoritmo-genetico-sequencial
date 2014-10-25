@@ -7,7 +7,6 @@
 #include "Grafo.h"
 
 AlgoritmoGenetico::AlgoritmoGenetico() {
-	srand(time(NULL));
 }
 
 void AlgoritmoGenetico::adicionaGrafoAPopulacao(int index, Grafo grafo) {
@@ -22,11 +21,14 @@ AlgoritmoGenetico::AlgoritmoGenetico(Grafo populacaoInicial[]) {
 }
 
 bool AlgoritmoGenetico::criterioDeParada() {
-	return !cromossomoMaisAdaptado.getGrafo().calculaAvaliacao() == 0; // TODO && tempoExcedido()
+	return !cromossomoMaisAdaptado.getAvaliacao() == 0; // TODO && tempoExcedido()
 }
 
 void AlgoritmoGenetico::executaAlgoritmo() {
 	while(criterioDeParada()) {
-
+		for (int i = 0; i < sizeof(populacao); ++i)
+			populacao[i].randomizaCorVertice();
 	}
+
+	printf("Cromossomo mais adaptado: %d", cromossomoMaisAdaptado.getAvaliacao());
 }

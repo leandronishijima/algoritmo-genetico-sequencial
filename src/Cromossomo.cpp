@@ -1,19 +1,27 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
 #include "Cromossomo.h"
 #include "Vertice.h"
 #include "Grafo.h"
 
-
 Cromossomo::Cromossomo() {
+	srand(time(NULL));
 }
 
 Cromossomo::Cromossomo(Grafo grafo) {
 	this->grafo = grafo;
 }
 
-int Cromossomo::getQuantidadeDeVertices() {
-	return grafo.getQuantidadeVertices();
+void Cromossomo::randomizaCorVertice() {
+	int qtdVertices = grafo.getQuantidadeVertices() + 1;
+	int verticeRandom = rand() % qtdVertices;
+	int corRandom = rand() % 4;
+
+	grafo.randomizaCorVerticeSeguindoHeuristica(verticeRandom, corRandom);
 }
 
-Grafo Cromossomo::getGrafo() {
-	return grafo;
+int Cromossomo::getAvaliacao() {
+	return grafo.calculaAvaliacao();
 }
