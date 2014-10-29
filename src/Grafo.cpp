@@ -67,12 +67,10 @@ void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor) {
 void Grafo::calculaAvaliacao() {
 	int novaAvaliacao = 0;
 
-	for (int i = 0; i < getQuantidadeVertices(); ++i) {
-		for (int j = i + 1; j < getQuantidadeVertices(); ++j) {
+	for (int i = 0; i < getQuantidadeVertices() - 1; ++i)
+		for (int j = i + 1; j < getQuantidadeVertices() - 1; ++j)
 			if(arestas[i][j].validaCorDiferenteVertices())
 				novaAvaliacao++;
-		}
-	}
 
 	avaliacao = novaAvaliacao;
 }
