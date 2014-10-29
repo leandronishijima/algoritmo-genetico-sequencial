@@ -21,13 +21,22 @@ AlgoritmoGenetico::AlgoritmoGenetico(Grafo populacaoInicial[]) {
 }
 
 bool AlgoritmoGenetico::criterioDeParada() {
-	return !cromossomoMaisAdaptado.getAvaliacao() == 0; // TODO && tempoExcedido()
+	return !cromossomoMaisAdaptado.getAvaliacao() == 0; // TODO || tempoExcedido()
+}
+
+void AlgoritmoGenetico::validaNovoCromossomoMaisAdaptado() {
+	for (int i = 0; i < sizeof(populacao); ++i) {
+		if (populacao[i].getAvaliacao() > cromossomoMaisAdaptado.getAvaliacao())
+			cromossomoMaisAdaptado = populacao[i];
+	}
 }
 
 void AlgoritmoGenetico::executaAlgoritmo() {
 	while(criterioDeParada()) {
 		for (int i = 0; i < sizeof(populacao); ++i)
 			populacao[i].randomizaCorVertice();
+
+		validaNovoCromossomoMaisAdaptado();
 	}
 
 	printf("Cromossomo mais adaptado: %d", cromossomoMaisAdaptado.getAvaliacao());

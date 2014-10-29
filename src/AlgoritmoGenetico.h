@@ -17,6 +17,7 @@ public:
 private:
 	void adicionaGrafoAPopulacao(int index, Grafo grafo);
 	bool criterioDeParada();
+	void validaNovoCromossomoMaisAdaptado();
 };
 
 #endif

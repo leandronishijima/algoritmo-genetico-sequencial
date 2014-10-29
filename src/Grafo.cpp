@@ -60,8 +60,10 @@ bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
 void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor) {
 	Vertice vertice = vertices[verticeNumero];
 
-	if(!existeAdjacenteComCor(vertice, cor))
+	if(!existeAdjacenteComCor(vertice, cor)) {
 		vertice.setCor(cor);
+		calculaAvaliacao();
+	}
 }
 
 void Grafo::calculaAvaliacao() {
