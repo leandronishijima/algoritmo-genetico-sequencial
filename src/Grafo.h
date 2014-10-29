@@ -17,14 +17,16 @@ class Grafo {
 public:
 	Grafo();
 	void adicionaVertice(int, int);
-	void adicionaAresta(int, int);
+	void adicionaArestaComCor1(int, int);
 	Aresta getAresta(int, int);
-	int calculaAvaliacao();
+	void calculaAvaliacao();
+	int getAvaliacao();
 	void randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor);
 	int getQuantidadeVertices();
 
 private:
 	bool existeAdjacenteComCor(Vertice vertice, int cor);
+	Vertice buscaOuAdicionaVerticeComCor1(int valorVertice);
 };
 
 #endif

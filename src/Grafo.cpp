@@ -18,9 +18,25 @@ void Grafo::adicionaVertice(int numeroVertice, int corVertice) {
 	vertices[numeroVertice] = v;
 }
 
-void Grafo::adicionaAresta(int verticeValor1, int verticeValor2) {
-	Vertice vertice1 = vertices[verticeValor1];
-	Vertice vertice2 = vertices[verticeValor2];
+Vertice Grafo::buscaOuAdicionaVerticeComCor1(int valorVertice) {
+	Vertice vertice = vertices[valorVertice];
+
+	if(vertice.isReal())
+		return vertice;
+	else {
+		vertice = Vertice();
+		vertice.setValor(valorVertice);
+		vertice.setCor(1);
+
+		vertices[valorVertice] = vertice;
+
+		return vertice;
+	}
+}
+
+void Grafo::adicionaArestaComCor1(int verticeValor1, int verticeValor2) {
+	Vertice vertice1 = buscaOuAdicionaVerticeComCor1(verticeValor1);
+	Vertice vertice2 = buscaOuAdicionaVerticeComCor1(verticeValor2);
 
 	arestas[verticeValor1][verticeValor2] = Aresta(vertice1, vertice2);
 }
@@ -48,8 +64,20 @@ void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor) {
 		vertice.setCor(cor);
 }
 
+void Grafo::calculaAvaliacao() {
+	int novaAvaliacao = 0;
 
-int Grafo::calculaAvaliacao() {
+	for (int i = 0; i < getQuantidadeVertices(); ++i) {
+		for (int j = i + 1; j < getQuantidadeVertices(); ++j) {
+			if(arestas[i][j].validaCorDiferenteVertices())
+				novaAvaliacao++;
+		}
+	}
+
+	avaliacao = novaAvaliacao;
+}
+
+int Grafo::getAvaliacao() {
 	return avaliacao;
 }
 

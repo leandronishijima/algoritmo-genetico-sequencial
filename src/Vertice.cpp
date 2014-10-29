@@ -3,6 +3,7 @@
 Vertice::Vertice() {
 	valor = 0l;
 	cor = 0;
+	real = true;
 }
 
 void Vertice::setValor(int valor) {
@@ -23,4 +24,8 @@ int Vertice::getCor() {
 
 bool Vertice::equals(Vertice other) {
 	return getValor() == other.getValor() && getCor() == other.getCor();
+}
+
+bool Vertice::isReal() {
+	return real;
 }

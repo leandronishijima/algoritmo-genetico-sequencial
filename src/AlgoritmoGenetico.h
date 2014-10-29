@@ -17,7 +17,6 @@ public:
 private:
 	void adicionaGrafoAPopulacao(int index, Grafo grafo);
 	bool criterioDeParada();
-
 };
 
 #endif

@@ -5,6 +5,7 @@ class Vertice {
 
 	int valor;
 	int cor;
+	bool real;
 
 public:
 	Vertice();
@@ -12,6 +13,7 @@ public:
 	void setCor(int);
 	int getCor(void);
 	int getValor(void);
+	bool isReal();
 	bool equals(Vertice other);
 };
 

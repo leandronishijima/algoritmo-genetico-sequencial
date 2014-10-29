@@ -1,8 +1,10 @@
 #include <iostream>
+#include <stdio.h>
 #include <stdlib.h>
 #include "Grafo.h"
 #include "Cromossomo.h"
 #include "AlgoritmoGenetico.h"
+#include "Vertice.h"
 
 using namespace std;
 
@@ -23,22 +25,22 @@ void adicionaVerticesComCoresRandomicas(Grafo grafo, int valores[]) {
 }
 
 void adicionaArestasTeste(Grafo& grafo) {
-	grafo.adicionaAresta(0, 1);
-	grafo.adicionaAresta(0, 2);
-	grafo.adicionaAresta(0, 3);
-	grafo.adicionaAresta(1, 0);
-	grafo.adicionaAresta(1, 2);
-	grafo.adicionaAresta(1, 4);
-	grafo.adicionaAresta(2, 0);
-	grafo.adicionaAresta(2, 1);
-	grafo.adicionaAresta(2, 5);
-	grafo.adicionaAresta(3, 0);
-	grafo.adicionaAresta(3, 5);
-	grafo.adicionaAresta(4, 1);
-	grafo.adicionaAresta(4, 5);
-	grafo.adicionaAresta(5, 3);
-	grafo.adicionaAresta(5, 4);
-	grafo.adicionaAresta(5, 2);
+	grafo.adicionaArestaComCor1(0, 1);
+	grafo.adicionaArestaComCor1(0, 2);
+	grafo.adicionaArestaComCor1(0, 3);
+	grafo.adicionaArestaComCor1(1, 0);
+	grafo.adicionaArestaComCor1(1, 2);
+	grafo.adicionaArestaComCor1(1, 4);
+	grafo.adicionaArestaComCor1(2, 0);
+	grafo.adicionaArestaComCor1(2, 1);
+	grafo.adicionaArestaComCor1(2, 5);
+	grafo.adicionaArestaComCor1(3, 0);
+	grafo.adicionaArestaComCor1(3, 5);
+	grafo.adicionaArestaComCor1(4, 1);
+	grafo.adicionaArestaComCor1(4, 5);
+	grafo.adicionaArestaComCor1(5, 3);
+	grafo.adicionaArestaComCor1(5, 4);
+	grafo.adicionaArestaComCor1(5, 2);
 }
 
 Grafo geraPrimeiroGrafoTeste() {
@@ -60,10 +62,21 @@ Grafo geraSegundoGrafoTeste() {
 void criaPopulacaoInicial() {
 	Cromossomo primeiroCromossomo = Cromossomo(geraPrimeiroGrafoTeste());
 	Cromossomo segundoCromossomo = Cromossomo(geraSegundoGrafoTeste());
+
+	populacaoInicial[0] = primeiroCromossomo;
+	populacaoInicial[1] = segundoCromossomo;
 }
 
 int main() {
-	criaPopulacaoInicial();
+//	criaPopulacaoInicial();
+
+	Vertice vertice = Vertice();
+	vertice.setCor(2);
+	vertice.setValor(2);
+
+	Vertice vertices[10];
+
+	printf("Valor: %d", vertices[0].isReal());
 
 	return 0;
 }
