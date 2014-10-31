@@ -8,7 +8,7 @@
 
 using namespace std;
 
-Cromossomo populacaoInicial[2];
+Grafo populacaoInicial[2];
 
 int arraySize(int array[]) {
 	return sizeof(array) / sizeof(int);
@@ -60,23 +60,15 @@ Grafo geraSegundoGrafoTeste() {
 }
 
 void criaPopulacaoInicial() {
-	Cromossomo primeiroCromossomo = Cromossomo(geraPrimeiroGrafoTeste());
-	Cromossomo segundoCromossomo = Cromossomo(geraSegundoGrafoTeste());
-
-	populacaoInicial[0] = primeiroCromossomo;
-	populacaoInicial[1] = segundoCromossomo;
+	populacaoInicial[0] = geraPrimeiroGrafoTeste();
+	populacaoInicial[1] = geraSegundoGrafoTeste();
 }
 
 int main() {
-//	criaPopulacaoInicial();
+	criaPopulacaoInicial();
 
-	Vertice vertice = Vertice();
-	vertice.setCor(2);
-	vertice.setValor(2);
-
-	Vertice vertices[10];
-
-	printf("Valor: %d", vertices[0].isReal());
+	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacaoInicial);
+	algoritmo.executaAlgoritmo();
 
 	return 0;
 }

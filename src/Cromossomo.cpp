@@ -23,5 +23,5 @@ void Cromossomo::randomizaCorVertice() {
 }
 
 int Cromossomo::getAvaliacao() {
-	return grafo.calculaAvaliacao();
+	return grafo.getAvaliacao();
 }
