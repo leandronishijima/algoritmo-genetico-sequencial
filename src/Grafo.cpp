@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <map>
 
 #include "Grafo.h"
 #include "Vertice.h"
@@ -19,7 +20,7 @@ void Grafo::adicionaVertice(int numeroVertice, int corVertice) {
 }
 
 Vertice Grafo::buscaOuAdicionaVerticeComCor1(int valorVertice) {
-	Vertice vertice = vertices[valorVertice];
+	Vertice vertice = vertices.at(valorVertice);
 
 	if(vertice.isReal())
 		return vertice;
@@ -41,8 +42,12 @@ void Grafo::adicionaArestaComCor1(int verticeValor1, int verticeValor2) {
 	arestas[verticeValor1][verticeValor2] = Aresta(vertice1, vertice2);
 }
 
+int Grafo::getQuantidadeVertices() {
+	return vertices.size();
+}
+
 bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
-	for (unsigned int i = 0; i < sizeof(vertices); ++i) {
+	for (int i = 0; i < getQuantidadeVertices(); ++i) {
 		Aresta aresta = arestas[vertice.getValor()][i];
 
 		if(!aresta.isArestaReal())
@@ -58,7 +63,7 @@ bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
 }
 
 void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor) {
-	Vertice vertice = vertices[verticeNumero];
+	Vertice vertice = vertices.at(verticeNumero);
 
 	if(!existeAdjacenteComCor(vertice, cor)) {
 		vertice.setCor(cor);
@@ -81,6 +86,3 @@ int Grafo::getAvaliacao() {
 	return avaliacao;
 }
 
-int Grafo::getQuantidadeVertices() {
-	return sizeof(vertices);
-}

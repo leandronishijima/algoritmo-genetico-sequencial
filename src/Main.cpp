@@ -1,3 +1,4 @@
+#include <vector>
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
@@ -9,19 +10,20 @@
 using namespace std;
 
 Grafo populacaoInicial[2];
+vector<int> numeroVertices;
 
-int arraySize(int array[]) {
-	return sizeof(array) / sizeof(int);
+int arraySize() {
+	return numeroVertices.size();
 }
 
-void adicionaVerticesComMesmaCor(Grafo grafo, int corDosVertices, int valores[]) {
-	for (int i=0; i < arraySize(valores); ++i)
-		grafo.adicionaVertice(valores[i], corDosVertices);
+void adicionaVerticesComMesmaCor(Grafo grafo, int corDosVertices) {
+	for (int i=0; i < arraySize(); ++i)
+		grafo.adicionaVertice(numeroVertices[i], corDosVertices);
 }
 
-void adicionaVerticesComCoresRandomicas(Grafo grafo, int valores[]) {
-	for (int i=0; i < arraySize(valores); ++i)
-		grafo.adicionaVertice(valores[i], rand() % 4);
+void adicionaVerticesComCoresRandomicas(Grafo grafo) {
+	for (int i=0; i < arraySize(); ++i)
+		grafo.adicionaVertice(numeroVertices[i], rand() % 4);
 }
 
 void adicionaArestasTeste(Grafo& grafo) {
@@ -45,16 +47,14 @@ void adicionaArestasTeste(Grafo& grafo) {
 
 Grafo geraPrimeiroGrafoTeste() {
 	Grafo grafo = Grafo();
-	int vertices[] = { 0, 1, 2, 3, 4, 5 };
-	adicionaVerticesComMesmaCor(grafo, 0, vertices);
+	adicionaVerticesComMesmaCor(grafo, 0);
 	adicionaArestasTeste(grafo);
 	return grafo;
 }
 
 Grafo geraSegundoGrafoTeste() {
 	Grafo grafo = Grafo();
-	int vertices[] = { 0, 1, 2, 3, 4, 5 };
-	adicionaVerticesComCoresRandomicas(grafo, vertices);
+	adicionaVerticesComCoresRandomicas(grafo);
 	adicionaArestasTeste(grafo);
 	return grafo;
 }
@@ -65,6 +65,13 @@ void criaPopulacaoInicial() {
 }
 
 int main() {
+	numeroVertices.push_back(0);
+	numeroVertices.push_back(1);
+	numeroVertices.push_back(2);
+	numeroVertices.push_back(3);
+	numeroVertices.push_back(4);
+	numeroVertices.push_back(5);
+
 	criaPopulacaoInicial();
 
 	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacaoInicial);
