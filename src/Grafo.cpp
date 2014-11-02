@@ -42,7 +42,7 @@ void Grafo::adicionaArestaComCor1(int verticeValor1, int verticeValor2) {
 }
 
 bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
-	for (unsigned int i = 0; i < vertices.size(); ++i) {
+	for (unsigned int i = 0; i < sizeof(vertices); ++i) {
 		Aresta aresta = arestas[vertice.getValor()][i];
 
 		if(!aresta.isArestaReal())
@@ -82,5 +82,5 @@ int Grafo::getAvaliacao() {
 }
 
 int Grafo::getQuantidadeVertices() {
-	return vertices.size();
+	return sizeof(vertices);
 }

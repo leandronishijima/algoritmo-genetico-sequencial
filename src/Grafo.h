@@ -11,7 +11,8 @@ class Grafo {
 
 //	Aresta arestas[5566][5566]; // grafo real
 	Aresta arestas[5][5]; // grafo testes
-	std::map<int, Vertice> vertices;
+//	std::map<int, Vertice> vertices;
+	Vertice vertices[];
 	int avaliacao;
 
 public:
