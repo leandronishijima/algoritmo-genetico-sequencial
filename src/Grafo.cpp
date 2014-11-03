@@ -20,7 +20,7 @@ void Grafo::adicionaVertice(int numeroVertice, int corVertice) {
 }
 
 Vertice Grafo::buscaOuAdicionaVerticeComCor1(int valorVertice) {
-	Vertice vertice = vertices.at(valorVertice);
+	Vertice vertice = vertices[valorVertice];
 
 	if(vertice.isReal())
 		return vertice;
@@ -29,7 +29,7 @@ Vertice Grafo::buscaOuAdicionaVerticeComCor1(int valorVertice) {
 		vertice.setValor(valorVertice);
 		vertice.setCor(1);
 
-		vertices[valorVertice] = vertice;
+		vertices.at(valorVertice) = vertice;
 
 		return vertice;
 	}
@@ -40,6 +40,7 @@ void Grafo::adicionaArestaComCor1(int verticeValor1, int verticeValor2) {
 	Vertice vertice2 = buscaOuAdicionaVerticeComCor1(verticeValor2);
 
 	arestas[verticeValor1][verticeValor2] = Aresta(vertice1, vertice2);
+	arestas[verticeValor2][verticeValor1] = Aresta(vertice2, vertice1);
 }
 
 int Grafo::getQuantidadeVertices() {

@@ -3,10 +3,11 @@
 Vertice::Vertice() {
 	valor = 0l;
 	cor = 0;
-	real = true;
+	real = false;
 }
 
 void Vertice::setValor(int valor) {
+	real = true;
 	this->valor = valor;
 }
 

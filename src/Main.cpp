@@ -2,10 +2,12 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "Grafo.h"
 #include "Cromossomo.h"
 #include "AlgoritmoGenetico.h"
 #include "Vertice.h"
+#include "GeradorDeGrafo.h"
 
 using namespace std;
 
@@ -26,7 +28,7 @@ void adicionaVerticesComCoresRandomicas(Grafo grafo) {
 		grafo.adicionaVertice(numeroVertices[i], rand() % 4);
 }
 
-void adicionaArestasTeste(Grafo& grafo) {
+void adicionaArestasTeste(Grafo grafo) {
 	grafo.adicionaArestaComCor1(0, 1);
 	grafo.adicionaArestaComCor1(0, 2);
 	grafo.adicionaArestaComCor1(0, 3);
@@ -47,7 +49,6 @@ void adicionaArestasTeste(Grafo& grafo) {
 
 Grafo geraPrimeiroGrafoTeste() {
 	Grafo grafo = Grafo();
-	adicionaVerticesComMesmaCor(grafo, 0);
 	adicionaArestasTeste(grafo);
 	return grafo;
 }
@@ -64,18 +65,25 @@ void criaPopulacaoInicial() {
 	populacaoInicial[1] = geraSegundoGrafoTeste();
 }
 
-int main() {
+void testeSemArquivo() {
 	numeroVertices.push_back(0);
 	numeroVertices.push_back(1);
 	numeroVertices.push_back(2);
 	numeroVertices.push_back(3);
 	numeroVertices.push_back(4);
 	numeroVertices.push_back(5);
-
 	criaPopulacaoInicial();
-
 	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacaoInicial);
 	algoritmo.executaAlgoritmo();
+}
 
+void testeComArquivo() {
+	GeradorDeGrafo gerador = GeradorDeGrafo("grafo5.txt");
+	Grafo grafo = gerador.getGrafo();
+}
+
+int main() {
+//	testeSemArquivo();
+	testeComArquivo();
 	return 0;
 }

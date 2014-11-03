@@ -4,6 +4,8 @@
 #include "Grafo.h"
 #include "Cromossomo.h"
 
+using namespace std;
+
 class AlgoritmoGenetico {
 
 	Cromossomo populacao[2];
