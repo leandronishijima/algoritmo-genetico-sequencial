@@ -72,6 +72,7 @@ void testeSemArquivo() {
 	numeroVertices.push_back(3);
 	numeroVertices.push_back(4);
 	numeroVertices.push_back(5);
+
 	criaPopulacaoInicial();
 	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacaoInicial);
 	algoritmo.executaAlgoritmo();
@@ -79,6 +80,7 @@ void testeSemArquivo() {
 
 void testeComArquivo() {
 	GeradorDeGrafo gerador = GeradorDeGrafo("grafo5.txt");
+	gerador.iteraArquivoGerandoGrafoComCorUnica();
 	Grafo grafo = gerador.getGrafo();
 }
 

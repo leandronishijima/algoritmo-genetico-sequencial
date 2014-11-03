@@ -6,10 +6,12 @@
 
 #include "Grafo.h"
 
+using namespace std;
+
 class GeradorDeGrafo {
 
 	Grafo grafo;
-	FILE *arquivo;
+	const char* nomeDoArquivo;
 
 public:
 	GeradorDeGrafo(const char* nomeDoArquivo);

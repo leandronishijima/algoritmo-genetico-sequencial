@@ -9,19 +9,23 @@
 using namespace std;
 
 void GeradorDeGrafo::iteraArquivoGerandoGrafoComCorUnica() {
-	int numeroVertice1 = 0;
-	int numeroVertice2 = 0;
+	ifstream arquivo(nomeDoArquivo);
 
-	while(feof(arquivo)) {
-		fscanf(arquivo, "%d %d", numeroVertice1, numeroVertice2);
-		grafo.adicionaArestaComCor1(numeroVertice1, numeroVertice2);
+	int numeroVertice1, numeroVertice2;
+
+ 	while(!arquivo.eof()) {
+		if(arquivo >> numeroVertice1 >> numeroVertice2)
+			grafo.adicionaArestaComCor1(numeroVertice1, numeroVertice2);
 	}
 
-	fclose(arquivo);
+	arquivo.close();
+}
+
+void GeradorDeGrafo::iteraArquivoGerandoGrafoComCoresRandom() {
 }
 
 GeradorDeGrafo::GeradorDeGrafo(const char* nomeDoArquivo) {
-	arquivo = fopen(nomeDoArquivo, "r");
+	this->nomeDoArquivo = nomeDoArquivo;
 }
 
 Grafo GeradorDeGrafo::getGrafo() {
