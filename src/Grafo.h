@@ -16,9 +16,9 @@ class Grafo {
 
 public:
 	Grafo();
-	void adicionaVertice(int, int);
-	void adicionaArestaComCor1(int, int);
-	Aresta getAresta(int, int);
+	Vertice adicionaVertice(int numeroVertice, int corVertice);
+	void adicionaArestaComCor1(int verticeValor1, int verticeValor2);
+	void adicionaArestaComCorAleatoria(int verticeValor1, int verticeValor2);
 	void calculaAvaliacao();
 	int getAvaliacao();
 	void randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor);
@@ -27,6 +27,7 @@ public:
 private:
 	bool existeAdjacenteComCor(Vertice vertice, int cor);
 	Vertice buscaOuAdicionaVerticeComCor1(int valorVertice);
+	Vertice buscaOuAdicionaVerticeComCorRandom(int valorVertice);
 };
 
 #endif

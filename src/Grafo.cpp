@@ -8,36 +8,51 @@
 #include "Aresta.h"
 
 Grafo::Grafo() {
+	srand(time(NULL));
 	avaliacao = -1;
 }
 
-void Grafo::adicionaVertice(int numeroVertice, int corVertice) {
+Vertice Grafo::adicionaVertice(int numeroVertice, int corVertice) {
 	Vertice v = Vertice();
 	v.setValor(numeroVertice);
 	v.setCor(corVertice);
 
 	vertices[numeroVertice] = v;
+
+	return v;
 }
 
 Vertice Grafo::buscaOuAdicionaVerticeComCor1(int valorVertice) {
 	Vertice vertice = vertices[valorVertice];
 
-	if(vertice.isReal())
+	if (vertice.isReal())
 		return vertice;
 	else {
-		vertice = Vertice();
-		vertice.setValor(valorVertice);
-		vertice.setCor(1);
-
-		vertices.at(valorVertice) = vertice;
-
-		return vertice;
+		return adicionaVertice(valorVertice, 1);
 	}
 }
 
 void Grafo::adicionaArestaComCor1(int verticeValor1, int verticeValor2) {
 	Vertice vertice1 = buscaOuAdicionaVerticeComCor1(verticeValor1);
 	Vertice vertice2 = buscaOuAdicionaVerticeComCor1(verticeValor2);
+
+	arestas[verticeValor1][verticeValor2] = Aresta(vertice1, vertice2);
+	arestas[verticeValor2][verticeValor1] = Aresta(vertice2, vertice1);
+}
+
+Vertice Grafo::buscaOuAdicionaVerticeComCorRandom(int valorVertice) {
+	Vertice vertice = vertices[valorVertice];
+
+	if (vertice.isReal())
+		return vertice;
+	else {
+		return adicionaVertice(valorVertice, rand() % 4);
+	}
+}
+
+void Grafo::adicionaArestaComCorAleatoria(int verticeValor1, int verticeValor2) {
+	Vertice vertice1 = buscaOuAdicionaVerticeComCorRandom(verticeValor1);
+	Vertice vertice2 = buscaOuAdicionaVerticeComCorRandom(verticeValor2);
 
 	arestas[verticeValor1][verticeValor2] = Aresta(vertice1, vertice2);
 	arestas[verticeValor2][verticeValor1] = Aresta(vertice2, vertice1);
@@ -51,12 +66,12 @@ bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
 	for (int i = 0; i < getQuantidadeVertices(); ++i) {
 		Aresta aresta = arestas[vertice.getValor()][i];
 
-		if(!aresta.isArestaReal())
+		if (!aresta.isArestaReal())
 			continue;
 
 		int corAdjacente = aresta.getCorOutroVertice(vertice);
 
-		if(corAdjacente == novaCor)
+		if (corAdjacente == novaCor)
 			return false;
 	}
 
@@ -66,7 +81,7 @@ bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
 void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor) {
 	Vertice vertice = vertices.at(verticeNumero);
 
-	if(!existeAdjacenteComCor(vertice, cor)) {
+	if (!existeAdjacenteComCor(vertice, cor)) {
 		vertice.setCor(cor);
 		calculaAvaliacao();
 	}
@@ -77,7 +92,7 @@ void Grafo::calculaAvaliacao() {
 
 	for (int i = 0; i < getQuantidadeVertices() - 1; ++i)
 		for (int j = i + 1; j < getQuantidadeVertices() - 1; ++j)
-			if(arestas[i][j].validaCorDiferenteVertices())
+			if (arestas[i][j].validaCorDiferenteVertices())
 				novaAvaliacao++;
 
 	avaliacao = novaAvaliacao;
