@@ -27,17 +27,29 @@ Vertice Grafo::buscaOuAdicionaVerticeComCor1(int valorVertice) {
 
 	if (vertice.isReal())
 		return vertice;
-	else {
+	else
 		return adicionaVertice(valorVertice, 1);
-	}
+}
+
+void Grafo::adicionaArestaNaListaDeAdjacencia(Vertice vertice, const Aresta& aresta) {
+	listaDeAdjacencia[vertice.getValor()].push_back(aresta);
+}
+
+void Grafo::criaAresta(Vertice vertice1, Vertice vertice2) {
+	Aresta aresta = Aresta(vertice1, vertice2);
+
+	arestas[vertice1.getValor()][vertice2.getValor()] = aresta;
+	arestas[vertice2.getValor()][vertice1.getValor()] = aresta;
+
+	adicionaArestaNaListaDeAdjacencia(vertice1, aresta);
+	adicionaArestaNaListaDeAdjacencia(vertice2, aresta);
 }
 
 void Grafo::adicionaArestaComCor1(int verticeValor1, int verticeValor2) {
 	Vertice vertice1 = buscaOuAdicionaVerticeComCor1(verticeValor1);
 	Vertice vertice2 = buscaOuAdicionaVerticeComCor1(verticeValor2);
 
-	arestas[verticeValor1][verticeValor2] = Aresta(vertice1, vertice2);
-	arestas[verticeValor2][verticeValor1] = Aresta(vertice2, vertice1);
+	criaAresta(vertice1, vertice2);
 }
 
 Vertice Grafo::buscaOuAdicionaVerticeComCorRandom(int valorVertice) {
@@ -45,17 +57,15 @@ Vertice Grafo::buscaOuAdicionaVerticeComCorRandom(int valorVertice) {
 
 	if (vertice.isReal())
 		return vertice;
-	else {
+	else
 		return adicionaVertice(valorVertice, rand() % 4);
-	}
 }
 
 void Grafo::adicionaArestaComCorAleatoria(int verticeValor1, int verticeValor2) {
 	Vertice vertice1 = buscaOuAdicionaVerticeComCorRandom(verticeValor1);
 	Vertice vertice2 = buscaOuAdicionaVerticeComCorRandom(verticeValor2);
 
-	arestas[verticeValor1][verticeValor2] = Aresta(vertice1, vertice2);
-	arestas[verticeValor2][verticeValor1] = Aresta(vertice2, vertice1);
+	criaAresta(vertice1, vertice2);
 }
 
 int Grafo::getQuantidadeVertices() {

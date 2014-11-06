@@ -2,6 +2,7 @@
 #define GRAFO_H_
 
 #include <map>
+#include <vector>
 #include "Vertice.h"
 #include "Aresta.h"
 
@@ -12,6 +13,7 @@ class Grafo {
 //	Aresta arestas[5566][5566]; // grafo real
 	Aresta arestas[6][6]; // grafo testes
 	map<int, Vertice> vertices;
+	map<int, vector<Aresta>> listaDeAdjacencia;
 	int avaliacao;
 
 public:
@@ -28,6 +30,8 @@ private:
 	bool existeAdjacenteComCor(Vertice vertice, int cor);
 	Vertice buscaOuAdicionaVerticeComCor1(int valorVertice);
 	Vertice buscaOuAdicionaVerticeComCorRandom(int valorVertice);
+	void adicionaArestaNaListaDeAdjacencia(Vertice vertice1, const Aresta& aresta);
+	void criaAresta(Vertice vertice1, Vertice vertice2);
 };
 
 #endif

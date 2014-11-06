@@ -18,6 +18,6 @@ void testeComArquivo() {
 }
 
 int main() {
-	testeComArquivo();
+//	testeComArquivo();
 	return 0;
 }
