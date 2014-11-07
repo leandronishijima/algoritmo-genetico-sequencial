@@ -96,10 +96,14 @@ void Grafo::calculaAvaliacao() {
 	int novaAvaliacao = 0;
 
 	for (int i = 0; i < getQuantidadeVertices() - 1; ++i) {
-		Aresta aresta = listaDeAdjacencia[i];
+		vector<Aresta> adjacentes = listaDeAdjacencia[i];
+
+		for(vector<Aresta>::iterator it = adjacentes.begin() ; it != adjacentes.end(); ++it) {
+			Aresta aresta = *it;
 
 		if(aresta.isCoresDiferentesEntreVertices())
 			novaAvaliacao++;
+		}
 	}
 
 	avaliacao = novaAvaliacao;
