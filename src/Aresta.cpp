@@ -19,7 +19,7 @@ void Aresta::setVertice2(Vertice v2) {
 	this->v2 = v2;
 }
 
-bool Aresta::validaCorDiferenteVertices() {
+bool Aresta::isCoresDiferentesEntreVertices() {
 	return v1.getCor() != v2.getCor();
 }
 

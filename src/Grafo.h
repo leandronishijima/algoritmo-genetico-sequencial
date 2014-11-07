@@ -11,9 +11,8 @@ using namespace std;
 class Grafo {
 
 //	Aresta arestas[5566][5566]; // grafo real
-	Aresta arestas[6][6]; // grafo testes
 	map<int, Vertice> vertices;
-	map<int, vector<Aresta>> listaDeAdjacencia;
+	map<int, vector<Aresta> > listaDeAdjacencia;
 	int avaliacao;
 
 public:
