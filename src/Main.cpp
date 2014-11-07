@@ -12,12 +12,12 @@
 using namespace std;
 
 void testeComArquivo() {
-	GeradorDeGrafo gerador = GeradorDeGrafo("grafo5.txt");
+	GeradorDeGrafo gerador = GeradorDeGrafo("grafo5565.txt");
 	gerador.iteraArquivoGerandoGrafoComCorUnica();
 	Grafo grafo = gerador.getGrafo();
 }
 
 int main() {
-//	testeComArquivo();
+	testeComArquivo();
 	return 0;
 }

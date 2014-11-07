@@ -10,7 +10,6 @@ using namespace std;
 
 class Grafo {
 
-//	Aresta arestas[5566][5566]; // grafo real
 	map<int, Vertice> vertices;
 	map<int, vector<Aresta> > listaDeAdjacencia;
 	int avaliacao;
