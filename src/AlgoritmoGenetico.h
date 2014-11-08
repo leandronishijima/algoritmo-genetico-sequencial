@@ -1,6 +1,7 @@
 #ifndef ALGORITMOGENETICO_H_
 #define ALGORITMOGENETICO_H_
 
+#include <vector>
 #include "Grafo.h"
 #include "Cromossomo.h"
 
@@ -8,16 +9,16 @@ using namespace std;
 
 class AlgoritmoGenetico {
 
-	Cromossomo populacao[2];
+	vector<Cromossomo> populacao;
 	Cromossomo cromossomoMaisAdaptado;
 
 public:
 	AlgoritmoGenetico();
-	AlgoritmoGenetico(Grafo populacaoInicial[]);
+	AlgoritmoGenetico(vector<Grafo> populacaoInicial);
 	void executaAlgoritmo();
 
 private:
-	void adicionaGrafoAPopulacao(int index, Grafo grafo);
+	void adicionaGrafoAPopulacao(Grafo grafo);
 	bool criterioDeParada();
 	void validaNovoCromossomoMaisAdaptado();
 };

@@ -24,14 +24,14 @@ void GeradorDeGrafo::iteraArquivoGerandoGrafoComCorUnica() {
 void GeradorDeGrafo::iteraArquivoGerandoGrafoComCoresRandom() {
 	ifstream arquivo(nomeDoArquivo);
 
-		int numeroVertice1, numeroVertice2;
+	int numeroVertice1, numeroVertice2;
 
-	 	while(!arquivo.eof()) {
-			if(arquivo >> numeroVertice1 >> numeroVertice2)
-				grafo.adicionaArestaComCorAleatoria(numeroVertice1, numeroVertice2);
-		}
+	while(!arquivo.eof()) {
+		if(arquivo >> numeroVertice1 >> numeroVertice2)
+			grafo.adicionaArestaComCorAleatoria(numeroVertice1, numeroVertice2);
+	}
 
-		arquivo.close();
+	arquivo.close();
 }
 
 GeradorDeGrafo::GeradorDeGrafo(const char* nomeDoArquivo) {

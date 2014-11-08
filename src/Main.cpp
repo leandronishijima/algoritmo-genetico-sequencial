@@ -12,9 +12,20 @@
 using namespace std;
 
 void testeComArquivo() {
-	GeradorDeGrafo gerador = GeradorDeGrafo("grafo5565.txt");
+	GeradorDeGrafo gerador = GeradorDeGrafo("grafo5.txt");
 	gerador.iteraArquivoGerandoGrafoComCorUnica();
-	Grafo grafo = gerador.getGrafo();
+	Grafo grafoComCorUnica = gerador.getGrafo();
+
+	gerador = GeradorDeGrafo("grafo5.txt");
+	gerador.iteraArquivoGerandoGrafoComCoresRandom();
+	Grafo grafoComCoresAleatorias = gerador.getGrafo();
+
+	vector<Grafo> populacao;
+	populacao.push_back(grafoComCorUnica);
+	populacao.push_back(grafoComCoresAleatorias);
+
+	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacao);
+	algoritmo.executaAlgoritmo();
 }
 
 int main() {

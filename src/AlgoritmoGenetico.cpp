@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <vector>
 
 #include "AlgoritmoGenetico.h"
 #include "Cromossomo.h"
@@ -9,15 +10,17 @@
 AlgoritmoGenetico::AlgoritmoGenetico() {
 }
 
-void AlgoritmoGenetico::adicionaGrafoAPopulacao(int index, Grafo grafo) {
-	populacao[index] = Cromossomo(grafo);
+void AlgoritmoGenetico::adicionaGrafoAPopulacao(Grafo grafo) {
+	populacao.push_back(Cromossomo(grafo));
 }
 
-AlgoritmoGenetico::AlgoritmoGenetico(Grafo populacaoInicial[]) {
-	for (unsigned int i = 0; i < sizeof(populacaoInicial); ++i)
-		adicionaGrafoAPopulacao(i, populacaoInicial[i]);
+AlgoritmoGenetico::AlgoritmoGenetico(vector<Grafo> populacaoInicial) {
+	for(vector<Grafo>::iterator it = populacaoInicial.begin() ; it != populacaoInicial.end(); ++it) {
+		Grafo grafo = *it;
+		adicionaGrafoAPopulacao(grafo);
+	}
 
-	cromossomoMaisAdaptado = populacao[0];
+	cromossomoMaisAdaptado = populacao.front();
 }
 
 bool AlgoritmoGenetico::criterioDeParada() {
@@ -25,16 +28,22 @@ bool AlgoritmoGenetico::criterioDeParada() {
 }
 
 void AlgoritmoGenetico::validaNovoCromossomoMaisAdaptado() {
-	for (int i = 0; i < sizeof(populacao); ++i) {
-		if (populacao[i].getAvaliacao() > cromossomoMaisAdaptado.getAvaliacao())
-			cromossomoMaisAdaptado = populacao[i];
+	for(vector<Cromossomo>::iterator it = populacao.begin() ; it != populacao.end(); ++it) {
+		Cromossomo cromossomo = *it;
+
+		if (cromossomo.getAvaliacao() > cromossomoMaisAdaptado.getAvaliacao())
+			cromossomoMaisAdaptado = cromossomo;
 	}
 }
 
 void AlgoritmoGenetico::executaAlgoritmo() {
 	while(criterioDeParada()) {
-		for (int i = 0; i < sizeof(populacao); ++i)
-			populacao[i].randomizaCorVertice();
+		// cruzamento de cromossomos!
+
+		for(vector<Cromossomo>::iterator it = populacao.begin() ; it != populacao.end(); ++it) {
+			Cromossomo cromossomo = *it;
+			cromossomo.randomizaCorVertice();
+		}
 
 		validaNovoCromossomoMaisAdaptado();
 	}
