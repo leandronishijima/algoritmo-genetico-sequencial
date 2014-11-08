@@ -24,7 +24,7 @@ AlgoritmoGenetico::AlgoritmoGenetico(vector<Grafo> populacaoInicial) {
 }
 
 bool AlgoritmoGenetico::criterioDeParada() {
-	return !cromossomoMaisAdaptado.getAvaliacao() == 0; // TODO || tempoExcedido()
+	return cromossomoMaisAdaptado.getAvaliacao() != 0; // TODO || tempoExcedido()
 }
 
 void AlgoritmoGenetico::validaNovoCromossomoMaisAdaptado() {
