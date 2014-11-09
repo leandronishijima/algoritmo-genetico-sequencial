@@ -10,8 +10,9 @@ using namespace std;
 
 class Grafo {
 
-	map<int, Vertice> vertices;
 	map<int, vector<Aresta> > listaDeAdjacencia;
+	map<int, Vertice> vertices;
+	vector<Aresta> arestas;
 	int avaliacao;
 
 public:

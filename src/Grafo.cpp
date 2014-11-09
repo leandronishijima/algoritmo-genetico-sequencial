@@ -38,6 +38,8 @@ void Grafo::adicionaArestaNaListaDeAdjacencia(Vertice vertice, const Aresta& are
 void Grafo::criaAresta(Vertice vertice1, Vertice vertice2) {
 	Aresta aresta = Aresta(vertice1, vertice2);
 
+	arestas.push_back(aresta);
+
 	adicionaArestaNaListaDeAdjacencia(vertice1, aresta);
 	adicionaArestaNaListaDeAdjacencia(vertice2, aresta);
 }
@@ -95,15 +97,11 @@ void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor) {
 void Grafo::calculaAvaliacao() {
 	int novaAvaliacao = 0;
 
-	for (int i = 0; i < getQuantidadeVertices() - 1; ++i) {
-		vector<Aresta> adjacentes = listaDeAdjacencia[i];
-
-		for(vector<Aresta>::iterator it = adjacentes.begin() ; it != adjacentes.end(); ++it) {
-			Aresta aresta = *it;
+	for(vector<Aresta>::iterator it = arestas.begin() ; it != arestas.end(); ++it) {
+		Aresta aresta = *it;
 
 		if(aresta.isCoresDiferentesEntreVertices())
 			novaAvaliacao++;
-		}
 	}
 
 	avaliacao = novaAvaliacao;
