@@ -15,8 +15,8 @@ Cromossomo::Cromossomo(Grafo grafo) {
 }
 
 void Cromossomo::randomizaCorVertice() {
-	int qtdVertices = grafo.getQuantidadeVertices() + 1;
-	int verticeRandom = rand() % qtdVertices;
+	int qtdVertices = grafo.getQuantidadeVertices() - 1;
+	int verticeRandom = rand() % qtdVertices + 1;
 	int corRandom = rand() % 4;
 
 	grafo.randomizaCorVerticeSeguindoHeuristica(verticeRandom, corRandom);

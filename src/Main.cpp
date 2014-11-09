@@ -24,9 +24,6 @@ void testeComArquivo() {
 	populacao.push_back(grafoComCorUnica);
 	populacao.push_back(grafoComCoresAleatorias);
 
-	int avaliacao1 = grafoComCorUnica.getAvaliacao();
-	int avaliacao2 = grafoComCoresAleatorias.getAvaliacao();
-
 	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacao);
 	algoritmo.executaAlgoritmo();
 }

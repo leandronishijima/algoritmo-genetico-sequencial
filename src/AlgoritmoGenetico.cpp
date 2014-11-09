@@ -1,3 +1,4 @@
+#include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -24,7 +25,7 @@ AlgoritmoGenetico::AlgoritmoGenetico(vector<Grafo> populacaoInicial) {
 }
 
 bool AlgoritmoGenetico::verificaAvaliacaoMaxima() {
-	return cromossomoMaisAdaptado.getAvaliacao() == cromossomoMaisAdaptado.getQuantidadeDeArestas();
+	return cromossomoMaisAdaptado.getAvaliacao() != cromossomoMaisAdaptado.getQuantidadeDeArestas();
 }
 
 bool AlgoritmoGenetico::criterioDeParada() {
@@ -52,5 +53,5 @@ void AlgoritmoGenetico::executaAlgoritmo() {
 		validaNovoCromossomoMaisAdaptado();
 	}
 
-	printf("Cromossomo mais adaptado: %d", cromossomoMaisAdaptado.getAvaliacao());
+	cout << "Avaliação do cromossomo mais adaptado: " << cromossomoMaisAdaptado.getAvaliacao() << endl;
 }
