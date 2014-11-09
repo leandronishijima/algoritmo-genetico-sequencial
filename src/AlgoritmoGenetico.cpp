@@ -25,7 +25,10 @@ AlgoritmoGenetico::AlgoritmoGenetico(vector<Grafo> populacaoInicial) {
 }
 
 bool AlgoritmoGenetico::verificaAvaliacaoMaxima() {
-	return cromossomoMaisAdaptado.getAvaliacao() != cromossomoMaisAdaptado.getQuantidadeDeArestas();
+	int avaliacao = cromossomoMaisAdaptado.getAvaliacao();
+	int quantidadeDeArestas = cromossomoMaisAdaptado.getQuantidadeDeArestas();
+	bool predicado = avaliacao < quantidadeDeArestas;
+	return predicado;
 }
 
 bool AlgoritmoGenetico::criterioDeParada() {
