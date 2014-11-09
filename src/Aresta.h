@@ -5,22 +5,22 @@
 
 class Aresta {
 
-	Vertice v1;
-	Vertice v2;
+	int v1;
+	int v2;
 	bool arestaReal;
 
 public:
 	Aresta();
-	Aresta(Vertice, Vertice);
-	bool isCoresDiferentesEntreVertices();
-	int getCorOutroVertice(Vertice vertice);
+	Aresta(int vertice1, int vertice2);
+	int getOutroVertice(int vertice);
 	void marcaArestaReal();
 	bool isArestaReal();
+	int getIndiceVertice1();
+	int getIndiceVertice2();
 
 private:
-	void setVertice1(Vertice);
-	void setVertice2(Vertice);
-
+	void setIndiceVertice1(int);
+	void setIndiceVertice2(int);
 };
 
 #endif

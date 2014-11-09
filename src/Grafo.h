@@ -27,11 +27,12 @@ public:
 	int getQuantidadeAresta();
 
 private:
-	bool existeAdjacenteComCor(Vertice vertice, int cor);
+	bool naoExisteAdjacenteComCor(Vertice vertice, int cor);
 	Vertice buscaOuAdicionaVerticeComCor1(int valorVertice);
 	Vertice buscaOuAdicionaVerticeComCorRandom(int valorVertice);
 	void adicionaArestaNaListaDeAdjacencia(Vertice vertice1, const Aresta& aresta);
 	void criaAresta(Vertice vertice1, Vertice vertice2);
+	bool isArestaComVerticesComCoresDiferentes(Aresta aresta);
 };
 
 #endif

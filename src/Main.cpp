@@ -12,17 +12,17 @@
 using namespace std;
 
 void testeComArquivo() {
-	GeradorDeGrafo gerador = GeradorDeGrafo("grafo5.txt");
+	GeradorDeGrafo gerador = GeradorDeGrafo("grafo6.txt");
 	gerador.iteraArquivoGerandoGrafoComCorUnica();
 	Grafo grafoComCorUnica = gerador.getGrafo();
 
-	gerador = GeradorDeGrafo("grafo5.txt");
+	gerador = GeradorDeGrafo("grafo6.txt");
 	gerador.iteraArquivoGerandoGrafoComCoresRandom();
 	Grafo grafoComCoresAleatorias = gerador.getGrafo();
 
 	vector<Grafo> populacao;
 	populacao.push_back(grafoComCorUnica);
-	populacao.push_back(grafoComCoresAleatorias);
+//	populacao.push_back(grafoComCoresAleatorias);
 
 	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacao);
 	algoritmo.executaAlgoritmo();

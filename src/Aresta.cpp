@@ -3,28 +3,26 @@
 
 Aresta::Aresta() {
 	arestaReal = false;
+	v1 = 0;
+	v2 = 0;
 }
 
-Aresta::Aresta(Vertice v1, Vertice v2) {
-	setVertice1(v1);
-	setVertice2(v2);
+Aresta::Aresta(int v1, int v2) {
+	setIndiceVertice1(v1);
+	setIndiceVertice2(v2);
 	marcaArestaReal();
 }
 
-void Aresta::setVertice1(Vertice v1) {
+void Aresta::setIndiceVertice1(int v1) {
 	this->v1 = v1;
 }
 
-void Aresta::setVertice2(Vertice v2) {
+void Aresta::setIndiceVertice2(int v2) {
 	this->v2 = v2;
 }
 
-bool Aresta::isCoresDiferentesEntreVertices() {
-	return v1.getCor() != v2.getCor();
-}
-
-int Aresta::getCorOutroVertice(Vertice vertice) {
-	return vertice.equals(v1) ? v2.getCor() : v1.getCor();
+int Aresta::getOutroVertice(int verticeNumero) {
+	return verticeNumero == v1 ? v2 : v1;
 }
 
 void Aresta::marcaArestaReal() {
@@ -33,4 +31,12 @@ void Aresta::marcaArestaReal() {
 
 bool Aresta::isArestaReal() {
 	return arestaReal;
+}
+
+int Aresta::getIndiceVertice1() {
+	return v1;
+}
+
+int Aresta::getIndiceVertice2() {
+	return v2;
 }

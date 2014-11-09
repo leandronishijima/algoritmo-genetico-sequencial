@@ -36,7 +36,7 @@ void Grafo::adicionaArestaNaListaDeAdjacencia(Vertice vertice, const Aresta& are
 }
 
 void Grafo::criaAresta(Vertice vertice1, Vertice vertice2) {
-	Aresta aresta = Aresta(vertice1, vertice2);
+	Aresta aresta = Aresta(vertice1.getValor(), vertice2.getValor());
 
 	arestas.push_back(aresta);
 
@@ -75,12 +75,13 @@ int Grafo::getQuantidadeAresta() {
 	return arestas.size();
 }
 
-bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
+bool Grafo::naoExisteAdjacenteComCor(Vertice vertice, int novaCor) {
 	vector<Aresta> adjacentes = listaDeAdjacencia[vertice.getValor()];
 
 	for(vector<Aresta>::iterator it = adjacentes.begin() ; it != adjacentes.end(); ++it) {
 		Aresta aresta = *it;
-		int corAdjacente = aresta.getCorOutroVertice(vertice);
+		int indiceOutroVertice = aresta.getOutroVertice(vertice.getValor());
+		int corAdjacente = vertices[indiceOutroVertice].getCor();
 
 		if (corAdjacente == novaCor)
 			return false;
@@ -92,10 +93,20 @@ bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
 void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor) {
  	Vertice vertice = vertices.at(verticeNumero);
 
-	if (!existeAdjacenteComCor(vertice, cor)) {
+	if (naoExisteAdjacenteComCor(vertice, cor)) {
 		vertice.setCor(cor);
 		calculaAvaliacao();
 	}
+}
+
+bool Grafo::isArestaComVerticesComCoresDiferentes(Aresta aresta) {
+	int indiceVertice1 = aresta.getIndiceVertice1();
+	int indiceVertice2 = aresta.getIndiceVertice2();
+
+	Vertice v1 = vertices[indiceVertice1];
+	Vertice v2 = vertices[indiceVertice2];
+
+	return v1.getCor() != v2.getCor();
 }
 
 void Grafo::calculaAvaliacao() {
@@ -104,7 +115,7 @@ void Grafo::calculaAvaliacao() {
 	for(vector<Aresta>::iterator it = arestas.begin() ; it != arestas.end(); ++it) {
 		Aresta aresta = *it;
 
-		if(aresta.isCoresDiferentesEntreVertices())
+		if (isArestaComVerticesComCoresDiferentes(aresta))
 			novaAvaliacao++;
 	}
 
