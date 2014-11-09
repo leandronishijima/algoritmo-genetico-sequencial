@@ -21,6 +21,7 @@ private:
 	void adicionaGrafoAPopulacao(Grafo grafo);
 	bool criterioDeParada();
 	void validaNovoCromossomoMaisAdaptado();
+	bool verificaAvaliacaoMaxima();
 };
 
 #endif

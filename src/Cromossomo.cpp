@@ -25,3 +25,7 @@ void Cromossomo::randomizaCorVertice() {
 int Cromossomo::getAvaliacao() {
 	return grafo.getAvaliacao();
 }
+
+int Cromossomo::getQuantidadeDeArestas() {
+	return grafo.getQuantidadeAresta();
+}

@@ -71,6 +71,10 @@ int Grafo::getQuantidadeVertices() {
 	return vertices.size();
 }
 
+int Grafo::getQuantidadeAresta() {
+	return arestas.size();
+}
+
 bool Grafo::existeAdjacenteComCor(Vertice vertice, int novaCor) {
 	vector<Aresta> adjacentes = listaDeAdjacencia[vertice.getValor()];
 

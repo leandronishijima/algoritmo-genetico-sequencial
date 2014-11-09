@@ -24,6 +24,7 @@ public:
 	int getAvaliacao();
 	void randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor);
 	int getQuantidadeVertices();
+	int getQuantidadeAresta();
 
 private:
 	bool existeAdjacenteComCor(Vertice vertice, int cor);

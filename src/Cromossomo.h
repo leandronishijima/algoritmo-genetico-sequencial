@@ -15,6 +15,7 @@ public:
 	int getQuantidadeDeVertices();
 	void randomizaCorVertice();
 	int getAvaliacao();
+	int getQuantidadeDeArestas();
 };
 
 #endif

@@ -23,8 +23,12 @@ AlgoritmoGenetico::AlgoritmoGenetico(vector<Grafo> populacaoInicial) {
 	cromossomoMaisAdaptado = populacao.front();
 }
 
+bool AlgoritmoGenetico::verificaAvaliacaoMaxima() {
+	return cromossomoMaisAdaptado.getAvaliacao() == cromossomoMaisAdaptado.getQuantidadeDeArestas();
+}
+
 bool AlgoritmoGenetico::criterioDeParada() {
-	return cromossomoMaisAdaptado.getAvaliacao() != 0; // TODO || tempoExcedido()
+	return verificaAvaliacaoMaxima(); // TODO || tempoExcedido()
 }
 
 void AlgoritmoGenetico::validaNovoCromossomoMaisAdaptado() {
