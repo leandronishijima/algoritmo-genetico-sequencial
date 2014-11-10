@@ -1,10 +1,10 @@
-#include "GeradorDeGrafo.h"
-
 #include <stdio.h>
 #include <fstream>
 #include <iostream>
 #include <string>
 #include <cstring>
+
+#include "GeradorDeGrafo.h"
 
 using namespace std;
 
@@ -26,10 +26,9 @@ void GeradorDeGrafo::iteraArquivoGerandoGrafoComCoresRandom() {
 
 	int numeroVertice1, numeroVertice2;
 
-	while(!arquivo.eof()) {
+	while(!arquivo.eof())
 		if(arquivo >> numeroVertice1 >> numeroVertice2)
 			grafo.adicionaArestaComCorAleatoria(numeroVertice1, numeroVertice2);
-	}
 
 	arquivo.close();
 }

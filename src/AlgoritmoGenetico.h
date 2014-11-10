@@ -22,6 +22,7 @@ private:
 	bool criterioDeParada();
 	void validaNovoCromossomoMaisAdaptado();
 	bool verificaAvaliacaoMaxima();
+	int avaliacaoCromossomoMaisAdaptado();
 };
 
 #endif

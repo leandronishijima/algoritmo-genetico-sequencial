@@ -39,7 +39,10 @@ void AlgoritmoGenetico::validaNovoCromossomoMaisAdaptado() {
 	for(vector<Cromossomo>::iterator it = populacao.begin() ; it != populacao.end(); ++it) {
 		Cromossomo cromossomo = *it;
 
-		if (cromossomo.getAvaliacao() > cromossomoMaisAdaptado.getAvaliacao())
+		int avaliacaoCromossomo = cromossomo.getAvaliacao();
+		int avaliacaoCromossomoMaisAdaptado = cromossomoMaisAdaptado.getAvaliacao();
+
+		if (avaliacaoCromossomo > avaliacaoCromossomoMaisAdaptado)
 			cromossomoMaisAdaptado = cromossomo;
 	}
 }
@@ -51,6 +54,9 @@ void AlgoritmoGenetico::executaAlgoritmo() {
 		for(vector<Cromossomo>::iterator it = populacao.begin() ; it != populacao.end(); ++it) {
 			Cromossomo cromossomo = *it;
 			cromossomo.randomizaCorVertice();
+
+			vector<Cromossomo>::iterator it2 = populacao.erase(it);
+			populacao.insert(it2, cromossomo);
 		}
 
 		validaNovoCromossomoMaisAdaptado();

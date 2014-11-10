@@ -80,6 +80,7 @@ bool Grafo::naoExisteAdjacenteComCor(Vertice vertice, int novaCor) {
 
 	for(vector<Aresta>::iterator it = adjacentes.begin() ; it != adjacentes.end(); ++it) {
 		Aresta aresta = *it;
+
 		int indiceOutroVertice = aresta.getOutroVertice(vertice.getValor());
 		int corAdjacente = vertices[indiceOutroVertice].getCor();
 
@@ -91,10 +92,11 @@ bool Grafo::naoExisteAdjacenteComCor(Vertice vertice, int novaCor) {
 }
 
 void Grafo::randomizaCorVerticeSeguindoHeuristica(int verticeNumero, int cor) {
- 	Vertice vertice = vertices.at(verticeNumero);
+ 	Vertice vertice = vertices[verticeNumero];
 
 	if (naoExisteAdjacenteComCor(vertice, cor)) {
 		vertice.setCor(cor);
+		vertices[verticeNumero] = vertice;
 		calculaAvaliacao();
 	}
 }
