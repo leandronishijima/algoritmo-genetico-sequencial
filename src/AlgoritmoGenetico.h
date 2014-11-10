@@ -11,6 +11,7 @@ class AlgoritmoGenetico {
 
 	vector<Cromossomo> populacao;
 	Cromossomo cromossomoMaisAdaptado;
+	long tempoExecucao;
 
 public:
 	AlgoritmoGenetico();

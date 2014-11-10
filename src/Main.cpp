@@ -22,7 +22,7 @@ void testeComArquivo() {
 
 	vector<Grafo> populacao;
 	populacao.push_back(grafoComCorUnica);
-//	populacao.push_back(grafoComCoresAleatorias);
+	populacao.push_back(grafoComCoresAleatorias);
 
 	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacao);
 	algoritmo.executaAlgoritmo();

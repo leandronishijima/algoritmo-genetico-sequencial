@@ -9,6 +9,7 @@
 #include "Grafo.h"
 
 AlgoritmoGenetico::AlgoritmoGenetico() {
+	tempoExecucao = 0l;
 }
 
 void AlgoritmoGenetico::adicionaGrafoAPopulacao(Grafo grafo) {
@@ -25,24 +26,18 @@ AlgoritmoGenetico::AlgoritmoGenetico(vector<Grafo> populacaoInicial) {
 }
 
 bool AlgoritmoGenetico::verificaAvaliacaoMaxima() {
-	int avaliacao = cromossomoMaisAdaptado.getAvaliacao();
-	int quantidadeDeArestas = cromossomoMaisAdaptado.getQuantidadeDeArestas();
-	bool predicado = avaliacao < quantidadeDeArestas;
-	return predicado;
+	return cromossomoMaisAdaptado.getAvaliacao() < cromossomoMaisAdaptado.getQuantidadeDeArestas();
 }
 
 bool AlgoritmoGenetico::criterioDeParada() {
-	return verificaAvaliacaoMaxima(); // TODO || tempoExcedido()
+	return verificaAvaliacaoMaxima();
 }
 
 void AlgoritmoGenetico::validaNovoCromossomoMaisAdaptado() {
 	for(vector<Cromossomo>::iterator it = populacao.begin() ; it != populacao.end(); ++it) {
 		Cromossomo cromossomo = *it;
 
-		int avaliacaoCromossomo = cromossomo.getAvaliacao();
-		int avaliacaoCromossomoMaisAdaptado = cromossomoMaisAdaptado.getAvaliacao();
-
-		if (avaliacaoCromossomo > avaliacaoCromossomoMaisAdaptado)
+		if (cromossomo.getAvaliacao() > cromossomoMaisAdaptado.getAvaliacao())
 			cromossomoMaisAdaptado = cromossomo;
 	}
 }
