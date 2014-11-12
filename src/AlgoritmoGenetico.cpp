@@ -43,7 +43,7 @@ void AlgoritmoGenetico::validaNovoCromossomoMaisAdaptado() {
 }
 
 void AlgoritmoGenetico::executaAlgoritmo() {
-	while(criterioDeParada()) {
+	while(criterioDeParada()) { // tempoMaximoExcedido()
 		// cruzamento de cromossomos!
 
 		for(vector<Cromossomo>::iterator it = populacao.begin() ; it != populacao.end(); ++it) {

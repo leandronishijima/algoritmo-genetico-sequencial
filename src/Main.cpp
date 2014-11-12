@@ -2,6 +2,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <stdlib.h>
+#include <thread>
 
 #include "Grafo.h"
 #include "Cromossomo.h"
@@ -11,7 +12,12 @@
 
 using namespace std;
 
-void testeComArquivo() {
+void executaAlgoritmoGenetico(vector<Grafo> populacao) {
+	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacao);
+	algoritmo.executaAlgoritmo();
+}
+
+void executaAlgoritmoSequencial() {
 	GeradorDeGrafo gerador = GeradorDeGrafo("grafo6.txt");
 	gerador.iteraArquivoGerandoGrafoComCorUnica();
 	Grafo grafoComCorUnica = gerador.getGrafo();
@@ -24,11 +30,32 @@ void testeComArquivo() {
 	populacao.push_back(grafoComCorUnica);
 	populacao.push_back(grafoComCoresAleatorias);
 
-	AlgoritmoGenetico algoritmo = AlgoritmoGenetico(populacao);
-	algoritmo.executaAlgoritmo();
+	executaAlgoritmoGenetico(populacao);
+}
+
+void executaAlgoritmoComThreads() {
+	GeradorDeGrafo gerador = GeradorDeGrafo("grafo6.txt");
+	gerador.iteraArquivoGerandoGrafoComCorUnica();
+	Grafo grafoComCorUnica = gerador.getGrafo();
+
+	gerador = GeradorDeGrafo("grafo6.txt");
+	gerador.iteraArquivoGerandoGrafoComCoresRandom();
+	Grafo grafoComCoresAleatorias = gerador.getGrafo();
+
+	vector<Grafo> populacaoComCorUnica;
+	populacaoComCorUnica.push_back(grafoComCorUnica);
+
+	vector<Grafo> populacaoComCoresAleatorias;
+	populacaoComCoresAleatorias.push_back(grafoComCoresAleatorias);
+
+	thread t1(executaAlgoritmoGenetico, populacaoComCorUnica);
+	thread t2(executaAlgoritmoGenetico, populacaoComCoresAleatorias);
+
+	t1.join();
+	t2.join();
 }
 
 int main() {
-	testeComArquivo();
+	executaAlgoritmoComThreads();
 	return 0;
 }
