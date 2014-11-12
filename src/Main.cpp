@@ -3,6 +3,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <thread>
+#include <chrono>
 
 #include "Grafo.h"
 #include "Cromossomo.h"
@@ -30,7 +31,17 @@ void executaAlgoritmoSequencial() {
 	populacao.push_back(grafoComCorUnica);
 	populacao.push_back(grafoComCoresAleatorias);
 
+	chrono::time_point<chrono::system_clock> start, end;
+	start = chrono::system_clock::now();
+
 	executaAlgoritmoGenetico(populacao);
+
+	end = chrono::system_clock::now();
+
+	chrono::duration<double> elapsed_seconds = end-start;
+    time_t end_time = chrono::system_clock::to_time_t(end);
+
+	cout << "Tempo de processamento (Sequencial): " << elapsed_seconds.count() << endl;
 }
 
 void executaAlgoritmoComThreads() {
@@ -48,14 +59,23 @@ void executaAlgoritmoComThreads() {
 	vector<Grafo> populacaoComCoresAleatorias;
 	populacaoComCoresAleatorias.push_back(grafoComCoresAleatorias);
 
+	chrono::time_point<chrono::system_clock> start, end;
+	start = chrono::system_clock::now();
+
 	thread t1(executaAlgoritmoGenetico, populacaoComCorUnica);
 	thread t2(executaAlgoritmoGenetico, populacaoComCoresAleatorias);
 
 	t1.join();
 	t2.join();
+	end = chrono::system_clock::now();
+
+	chrono::duration<double> elapsed_seconds = end-start;
+    time_t end_time = chrono::system_clock::to_time_t(end);
+
+	cout << "Tempo de processamento (2 threads): " << elapsed_seconds.count() << endl;
 }
 
 int main() {
-	executaAlgoritmoComThreads();
+	executaAlgoritmoSequencial();
 	return 0;
 }
